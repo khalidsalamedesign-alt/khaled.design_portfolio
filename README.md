@@ -1,1 +1,579 @@
-# khaled.design_portfolio
+[khalid-portfolio.html](https://github.com/user-attachments/files/28193465/khalid-portfolio.html)
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khalid Al-Salami - Graphic Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a1f3a; --accent: #f7b731; --accent2: #e84393;
+      --bg: #f5f6fa; --text: #2d3436; --muted: #636e72;
+      --border: #e8ecf0; --green: #00b894; --star: #f7b731;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Cairo',sans-serif; background:var(--bg); color:var(--text); direction:rtl; }
+
+    /* HEADER */
+    .site-header { background:var(--primary); padding:14px 0; position:sticky; top:0; z-index:100; box-shadow:0 2px 20px rgba(0,0,0,0.3); }
+    .header-inner { max-width:1100px; margin:0 auto; padding:0 20px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size:22px; font-weight:900; color:var(--accent); letter-spacing:-0.5px; font-family:'Arial',sans-serif; }
+    .logo span { color:#fff; }
+    .header-nav a { color:rgba(255,255,255,0.8); text-decoration:none; margin-right:20px; font-size:14px; transition:color 0.2s; }
+    .header-nav a:hover { color:var(--accent); }
+    .btn-contact { background:var(--accent); color:var(--primary); padding:8px 20px; border-radius:25px; font-weight:700; font-size:14px; text-decoration:none; transition:transform 0.2s,box-shadow 0.2s; }
+    .btn-contact:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(247,183,49,0.4); }
+
+    /* HERO */
+    .profile-hero { background:linear-gradient(135deg,var(--primary) 0%,#2d3561 60%,#1a1f3a 100%); padding:50px 20px 60px; position:relative; overflow:hidden; }
+    .profile-hero::before { content:''; position:absolute; top:-80px; left:-80px; width:300px; height:300px; background:radial-gradient(circle,rgba(247,183,49,0.12) 0%,transparent 70%); border-radius:50%; }
+    .profile-hero::after { content:''; position:absolute; bottom:-60px; right:-60px; width:250px; height:250px; background:radial-gradient(circle,rgba(232,67,147,0.1) 0%,transparent 70%); border-radius:50%; }
+    .profile-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; gap:30px; position:relative; z-index:1; }
+    .profile-avatar-wrap { position:relative; flex-shrink:0; }
+    .profile-avatar { width:110px; height:110px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:42px; font-weight:900; color:white; border:4px solid rgba(255,255,255,0.2); box-shadow:0 8px 30px rgba(0,0,0,0.3); }
+    .online-dot { position:absolute; bottom:8px; left:8px; width:18px; height:18px; background:var(--green); border-radius:50%; border:3px solid var(--primary); }
+    .profile-info { flex:1; }
+    .profile-name { font-size:28px; font-weight:900; color:#fff; margin-bottom:6px; }
+    .profile-title { color:var(--accent); font-size:15px; font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+    .profile-meta { display:flex; gap:20px; flex-wrap:wrap; }
+    .meta-chip { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.85); padding:5px 14px; border-radius:20px; font-size:13px; display:flex; align-items:center; gap:6px; backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.1); }
+    .profile-stats { display:flex; gap:25px; margin-top:20px; }
+    .stat-item { text-align:center; }
+    .stat-val { font-size:22px; font-weight:900; color:var(--accent); }
+    .stat-label { font-size:11px; color:rgba(255,255,255,0.6); margin-top:2px; }
+    .stat-divider { width:1px; background:rgba(255,255,255,0.15); }
+
+    /* TABS */
+    .tabs-bar { background:white; border-bottom:2px solid var(--border); position:sticky; top:58px; z-index:90; }
+    .tabs-inner { max-width:1100px; margin:0 auto; padding:0 20px; display:flex; }
+    .tab-btn { padding:16px 24px; border:none; background:none; font-family:'Cairo',sans-serif; font-size:14px; font-weight:600; color:var(--muted); cursor:pointer; border-bottom:3px solid transparent; margin-bottom:-2px; transition:all 0.2s; display:flex; align-items:center; gap:8px; }
+    .tab-btn.active { color:var(--primary); border-bottom-color:var(--accent); }
+
+    /* LAYOUT */
+    .main-wrap { max-width:1100px; margin:0 auto; padding:30px 20px; display:grid; grid-template-columns:1fr 300px; gap:25px; }
+
+    /* CARDS */
+    .about-card { background:white; border-radius:16px; padding:28px; margin-bottom:25px; box-shadow:0 2px 15px rgba(0,0,0,0.06); border:1px solid var(--border); }
+    .section-title { font-size:18px; font-weight:800; color:var(--primary); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+    .section-title::after { content:''; flex:1; height:2px; background:linear-gradient(to left,transparent,var(--border)); }
+    .about-text { color:var(--muted); line-height:1.9; font-size:14.5px; }
+    .skills-list { display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+    .skill-tag { background:linear-gradient(135deg,#f8f9ff,#eef0ff); color:var(--primary); padding:6px 16px; border-radius:20px; font-size:13px; font-weight:600; border:1px solid #d8dcff; transition:all 0.2s; }
+    .skill-tag:hover { background:var(--primary); color:white; }
+
+    /* SERVICES */
+    .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+    .service-card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 2px 15px rgba(0,0,0,0.06); border:1px solid var(--border); transition:transform 0.25s,box-shadow 0.25s; cursor:pointer; text-decoration:none; color:inherit; display:block; }
+    .service-card:hover { transform:translateY(-5px); box-shadow:0 12px 35px rgba(0,0,0,0.12); }
+
+    /* service image with real photo */
+    .service-img { width:100%; aspect-ratio:16/10; position:relative; overflow:hidden; }
+    .service-img img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+    .service-card:hover .service-img img { transform:scale(1.07); }
+    .service-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 60%); z-index:1; }
+    .service-img-badge { position:absolute; top:10px; right:10px; background:var(--accent); color:var(--primary); font-size:11px; font-weight:800; padding:4px 10px; border-radius:20px; z-index:2; }
+
+    /* per-service review badge inside image */
+    .service-img-reviews { position:absolute; bottom:10px; right:10px; z-index:2; display:flex; align-items:center; gap:4px; background:rgba(0,0,0,0.55); color:#fff; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; backdrop-filter:blur(4px); }
+
+    .service-body { padding:14px 16px 16px; }
+    .service-title { font-size:13.5px; font-weight:700; color:var(--text); margin-bottom:6px; line-height:1.5; }
+    .service-category { font-size:11px; color:var(--muted); margin-bottom:10px; }
+    .service-category span { color:var(--accent2); font-weight:600; }
+    .service-footer { display:flex; justify-content:space-between; align-items:center; }
+    .stars { color:var(--star); font-size:12px; }
+    .review-count { font-size:11px; color:var(--muted); margin-right:4px; }
+    .price { font-weight:800; font-size:14px; color:var(--primary); }
+    .price-from { font-size:11px; color:var(--muted); font-weight:400; }
+
+    /* SIDEBAR */
+    .sidebar { display:flex; flex-direction:column; gap:18px; }
+    .sidebar-card { background:white; border-radius:14px; padding:22px; box-shadow:0 2px 15px rgba(0,0,0,0.06); border:1px solid var(--border); }
+    .sidebar-title { font-size:15px; font-weight:800; color:var(--primary); margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--border); }
+    .stat-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border); font-size:13.5px; }
+    .stat-row:last-child { border-bottom:none; }
+    .stat-row-label { color:var(--muted); }
+    .stat-row-val { font-weight:700; color:var(--primary); }
+    .progress-bar { width:100%; height:6px; background:var(--border); border-radius:3px; overflow:hidden; margin-top:4px; }
+    .progress-fill { height:100%; border-radius:3px; background:linear-gradient(to right,var(--accent),var(--accent2)); }
+    .tools-list { display:flex; flex-direction:column; gap:10px; }
+    .tool-item { display:flex; align-items:center; gap:10px; font-size:13px; color:var(--text); font-weight:500; }
+    .tool-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+
+    /* achievements grid */
+    .achievements-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px; }
+    .ach-item { background:linear-gradient(135deg,#f8f9ff,#eef0ff); border-radius:12px; padding:14px 10px; text-align:center; border:1px solid #d8dcff; }
+    .ach-icon { font-size:22px; margin-bottom:4px; }
+    .ach-val { font-size:20px; font-weight:900; color:var(--primary); }
+    .ach-label { font-size:10px; color:var(--muted); margin-top:2px; }
+
+    .cta-card { background:linear-gradient(135deg,var(--primary),#2d3561); border:none; text-align:center; }
+    .cta-card .sidebar-title { color:white; border-color:rgba(255,255,255,0.15); }
+    .cta-text { color:rgba(255,255,255,0.75); font-size:13px; line-height:1.7; margin-bottom:16px; }
+    .btn-cta { display:block; background:var(--accent); color:var(--primary); padding:12px 20px; border-radius:25px; font-weight:800; font-size:14px; text-decoration:none; transition:transform 0.2s,box-shadow 0.2s; }
+    .btn-cta:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(247,183,49,0.4); }
+
+    /* REVIEWS */
+    .review-item { padding:18px 0; border-bottom:1px solid var(--border); }
+    .review-item:last-child { border-bottom:none; }
+    .review-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px; }
+    .reviewer-info { display:flex; gap:10px; align-items:center; }
+    .reviewer-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:14px; }
+    .reviewer-name { font-size:13px; font-weight:700; }
+    .review-date { font-size:11px; color:var(--muted); margin-top:2px; }
+    .review-stars { color:var(--star); font-size:13px; }
+    .review-text { font-size:13.5px; color:var(--muted); line-height:1.7; }
+
+    /* EDIT */
+    .edit-fab { position:fixed; bottom:30px; left:30px; background:var(--accent2); color:white; width:56px; height:56px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; cursor:pointer; box-shadow:0 8px 25px rgba(232,67,147,0.4); z-index:200; transition:transform 0.2s; border:none; }
+    .edit-fab:hover { transform:scale(1.1) rotate(15deg); }
+    .edit-panel { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:300; display:none; align-items:center; justify-content:center; backdrop-filter:blur(4px); }
+    .edit-panel.open { display:flex; }
+    .edit-box { background:white; border-radius:20px; padding:30px; width:90%; max-width:600px; max-height:85vh; overflow-y:auto; box-shadow:0 25px 60px rgba(0,0,0,0.3); }
+    .edit-box h2 { font-size:20px; font-weight:800; color:var(--primary); margin-bottom:20px; }
+    .edit-group { margin-bottom:18px; }
+    .edit-group label { display:block; font-size:13px; font-weight:700; color:var(--primary); margin-bottom:6px; }
+    .edit-group input,.edit-group textarea { width:100%; padding:10px 14px; border:2px solid var(--border); border-radius:10px; font-family:'Cairo',sans-serif; font-size:14px; color:var(--text); direction:rtl; }
+    .edit-group input:focus,.edit-group textarea:focus { outline:none; border-color:var(--primary); }
+    .edit-group textarea { resize:vertical; min-height:80px; }
+    .edit-actions { display:flex; gap:10px; margin-top:20px; }
+    .btn-save { flex:1; background:var(--primary); color:white; padding:12px; border:none; border-radius:10px; font-family:'Cairo',sans-serif; font-size:14px; font-weight:700; cursor:pointer; }
+    .btn-cancel { padding:12px 20px; background:var(--bg); color:var(--muted); border:none; border-radius:10px; font-family:'Cairo',sans-serif; font-size:14px; cursor:pointer; }
+    .services-edit-list { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+    .service-edit-row { background:var(--bg); border-radius:10px; padding:12px; display:flex; gap:8px; align-items:center; }
+    .service-edit-row input { flex:1; padding:8px 10px; border:1px solid var(--border); border-radius:8px; font-family:'Cairo',sans-serif; font-size:13px; direction:rtl; }
+    .service-edit-row .del-btn { background:#ffe0e0; color:#e74c3c; border:none; border-radius:8px; padding:8px 12px; cursor:pointer; font-size:16px; }
+    .add-service-btn { background:#e8f8f5; color:var(--green); border:2px dashed var(--green); border-radius:10px; padding:10px; width:100%; font-family:'Cairo',sans-serif; font-size:14px; font-weight:700; cursor:pointer; }
+    .edit-tabs { display:flex; gap:8px; margin-bottom:20px; border-bottom:2px solid var(--border); padding-bottom:12px; flex-wrap:wrap; }
+    .edit-tab { padding:8px 16px; border-radius:20px; border:none; font-family:'Cairo',sans-serif; font-size:13px; font-weight:700; cursor:pointer; background:var(--bg); color:var(--muted); }
+    .edit-tab.active { background:var(--primary); color:white; }
+
+    footer { background:var(--primary); color:rgba(255,255,255,0.5); text-align:center; padding:20px; font-size:13px; margin-top:40px; }
+
+    @media(max-width:768px){ .main-wrap{grid-template-columns:1fr;} .sidebar{order:-1;} .services-grid{grid-template-columns:1fr 1fr;} .profile-inner{flex-direction:column;text-align:center;} .profile-stats{justify-content:center;} .profile-meta{justify-content:center;} .header-nav{display:none;} }
+    @media(max-width:480px){ .services-grid{grid-template-columns:1fr;} }
+
+    @keyframes fadeUp{ from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .service-card{animation:fadeUp 0.5s ease both;}
+    .service-card:nth-child(1){animation-delay:.05s} .service-card:nth-child(2){animation-delay:.1s}
+    .service-card:nth-child(3){animation-delay:.15s} .service-card:nth-child(4){animation-delay:.2s}
+    .service-card:nth-child(5){animation-delay:.25s} .service-card:nth-child(6){animation-delay:.3s}
+    .service-card:nth-child(7){animation-delay:.35s}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">Khalid<span>.pro</span></div>
+    <nav class="header-nav">
+      <a href="#services">الخدمات</a>
+      <a href="#about">عني</a>
+      <a href="#reviews">التقييمات</a>
+    </nav>
+    <a href="https://wa.me/963993986200" class="btn-contact" id="contactBtn">تواصل معي</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="profile-hero">
+  <div class="profile-inner">
+    <div class="profile-avatar-wrap">
+      <div class="profile-avatar" id="avatarEmoji">K</div>
+      <div class="online-dot"></div>
+    </div>
+    <div class="profile-info">
+      <h1 class="profile-name" id="heroName">Khalid Al-Salami</h1>
+      <div class="profile-title">
+        <span>🎨</span><span id="heroTitle">Graphic Designer — Syria</span>
+      </div>
+      <div class="profile-meta">
+        <div class="meta-chip">⭐ 5.0 (190 تقييم)</div>
+        <div class="meta-chip">✅ إكمال 97%</div>
+        <div class="meta-chip">⚡ ساعة وقت الرد</div>
+        <div class="meta-chip">🏆 مستوى 3</div>
+      </div>
+      <div class="profile-stats">
+        <div class="stat-item">
+          <div class="stat-val" id="statClients">210</div>
+          <div class="stat-label">عميل راضٍ</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-val" id="statProjects">90+</div>
+          <div class="stat-label">مشروع منجز</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-val" id="statYears">4+</div>
+          <div class="stat-label">سنوات خبرة</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <div class="tabs-inner">
+    <button class="tab-btn active" onclick="showTab('services')">🛠 الخدمات</button>
+    <button class="tab-btn" onclick="showTab('about')">👤 الملف الشخصي</button>
+    <button class="tab-btn" onclick="showTab('reviews')">⭐ التقييمات</button>
+  </div>
+</div>
+
+<div class="main-wrap">
+  <div class="content-area">
+
+    <!-- SERVICES TAB -->
+    <div id="tab-services">
+      <div class="section-title" style="margin-bottom:18px;">🛠 خدماتي</div>
+      <div class="services-grid" id="servicesGrid">
+
+        <!-- 1: إعادة رسم الشعار -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&q=80" alt="إعادة رسم الشعار" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">🔥 الأكثر طلباً</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(28)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">إعادة رسم الشعارات القديمة إلى شعار حديث بصيغة الفيكتور</div>
+            <div class="service-category"><span>تصميم</span> / تحسين شعارات</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(28)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$15.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 2: تصميم شعار -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=600&q=80" alt="تصميم شعار" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">⭐ تقييم 5.0</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(35)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم شعار احترافي ومميز بدقة عالية وصيغة فيكتور قابل للتعديل</div>
+            <div class="service-category"><span>تصميم</span> / تصميم شعار</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(35)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$50.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 3: هوية بصرية كاملة -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?w=600&q=80" alt="هوية بصرية" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">💎 هوية متكاملة</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(62)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم هوية بصرية كاملة — من الشعار وحتى دليل الهوية</div>
+            <div class="service-category"><span>تصميم</span> / هوية بصرية كاملة</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(62)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$100.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 4: ختم -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?w=600&q=80" alt="تصميم ختم" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">🔏 للشركات والأفراد</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(14)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم ختم احترافي للشركات والأفراد — بصيغة فيكتور جاهز للطباعة</div>
+            <div class="service-category"><span>تصميم</span> / تصميم ختم</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(14)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$15.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 5: ليترهيد -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=600&q=80" alt="ليترهيد" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">📄 مطبوعات مكتبية</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(19)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم ورق مراسلات Letter Head احترافي جاهز للطباعة</div>
+            <div class="service-category"><span>تصميم</span> / مطبوعات مكتبية</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(19)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$10.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 6: بروفايل PDF -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&q=80" alt="بروفايل شركة" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">📁 ملف تعريفي PDF</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(22)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم بروفايل شركة إبداعي — ملف تعريفي PDF احترافي</div>
+            <div class="service-category"><span>تصميم</span> / بروفايل شركة</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(22)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$50.00</div>
+            </div>
+          </div>
+        </a>
+
+        <!-- 7: بروفايل PowerPoint -->
+        <a href="#" class="service-card">
+          <div class="service-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="باور بوينت" loading="lazy">
+            <div class="service-img-overlay"></div>
+            <div class="service-img-badge">📊 PowerPoint</div>
+            <div class="service-img-reviews">★ 5.0 &nbsp;(10)</div>
+          </div>
+          <div class="service-body">
+            <div class="service-title">تصميم بروفايل شركة احترافي على تطبيق PowerPoint قابل للتعديل</div>
+            <div class="service-category"><span>تصميم</span> / بروفايل شركة</div>
+            <div class="service-footer">
+              <div><span class="stars">★★★★★</span><span class="review-count">(10)</span></div>
+              <div class="price"><span class="price-from">يبدأ من </span>$35.00</div>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ABOUT TAB -->
+    <div id="tab-about" style="display:none;">
+      <div class="about-card">
+        <div class="section-title">👤 نبذة عني</div>
+        <p class="about-text" id="aboutText">
+          السلام عليكم،<br><br>
+          أنا خالد السلامي، مصمم هويات بصرية متخصص في بناء علامات تجارية تترك أثراً لدى عملائك.<br><br>
+          أعمل مع الشركات والمؤسسات على تصميم هويات بصرية متكاملة — من الشعار وحتى آخر تفصيلة في دليل الهوية — بأسلوب يعكس القيمة الحقيقية للعميل ويميزه في السوق.
+        </p>
+        <div class="skills-list">
+          <span class="skill-tag">الهويات البصرية الكاملة</span>
+          <span class="skill-tag">تصميم الشعارات</span>
+          <span class="skill-tag">المطبوعات والبنرات</span>
+          <span class="skill-tag">السوشيال ميديا</span>
+          <span class="skill-tag">بروفايل الشركات</span>
+          <span class="skill-tag">Adobe Illustrator</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">InDesign</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REVIEWS TAB -->
+    <div id="tab-reviews" style="display:none;">
+      <div class="about-card">
+        <div class="section-title">⭐ آراء عملائي</div>
+        <div class="review-item">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">أ</div>
+              <div><div class="reviewer-name">أحمد الحربي</div><div class="review-date">مارس 2024</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">عمل احترافي جداً وتسليم في الوقت المحدد. الشعار طلع أحسن من توقعاتي، شكراً جزيلاً.</div>
+        </div>
+        <div class="review-item">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">م</div>
+              <div><div class="reviewer-name">محمد العلي</div><div class="review-date">يناير 2024</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">صمم لي هوية بصرية كاملة لشركتي وكان التعامل ممتاز من البداية للنهاية. ينصح بالتعامل معه.</div>
+        </div>
+        <div class="review-item">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <div class="reviewer-avatar">س</div>
+              <div><div class="reviewer-name">سارة الزهراني</div><div class="review-date">ديسمبر 2023</div></div>
+            </div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+          <div class="review-text">تعديلات بدون حدود وصبر على كل تعليقاتي. النتيجة النهائية كانت رائعة جداً.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card cta-card">
+      <div class="sidebar-title">💬 هل تريد خدمة مميزة؟</div>
+      <p class="cta-text">تواصل معي مباشرةً وسأساعدك في بناء هوية بصرية تليق بعملك.</p>
+      <a href="https://wa.me/963993986200" class="btn-cta" id="whatsappBtn">تواصل عبر واتساب 📱</a>
+    </div>
+
+    <!-- بدل إحصائيات: إنجازاتي -->
+    <div class="sidebar-card">
+      <div class="sidebar-title">🏅 إنجازاتي بالأرقام</div>
+      <div class="achievements-grid">
+        <div class="ach-item">
+          <div class="ach-icon">⭐</div>
+          <div class="ach-val">5.0</div>
+          <div class="ach-label">متوسط التقييم</div>
+        </div>
+        <div class="ach-item">
+          <div class="ach-icon">👥</div>
+          <div class="ach-val">210</div>
+          <div class="ach-label">عميل سعيد</div>
+        </div>
+        <div class="ach-item">
+          <div class="ach-icon">💬</div>
+          <div class="ach-val">190</div>
+          <div class="ach-label">تقييم إيجابي</div>
+        </div>
+        <div class="ach-item">
+          <div class="ach-icon">🚀</div>
+          <div class="ach-val">97%</div>
+          <div class="ach-label">نسبة الإنجاز</div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label">نجاح التواصلات</span>
+        <div style="text-align:left;flex:1;margin-right:10px;">
+          <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+          <span style="font-size:11px;color:var(--muted)">80%</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label">إكمال الطلبات</span>
+        <div style="text-align:left;flex:1;margin-right:10px;">
+          <div class="progress-bar"><div class="progress-fill" style="width:97%"></div></div>
+          <span style="font-size:11px;color:var(--muted)">97%</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label">سرعة الرد</span>
+        <span class="stat-row-val">⚡ أقل من ساعة</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-row-label">عضو منذ</span>
+        <span class="stat-row-val">مارس 2021</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">🛠 الأدوات</div>
+      <div class="tools-list">
+        <div class="tool-item"><div class="tool-icon" style="background:#ff6c0040">🎨</div> Adobe Illustrator</div>
+        <div class="tool-item"><div class="tool-icon" style="background:#31a8ff30">🖼</div> Adobe Photoshop</div>
+        <div class="tool-item"><div class="tool-icon" style="background:#ff026f30">📐</div> Adobe InDesign</div>
+        <div class="tool-item"><div class="tool-icon" style="background:#d04a0230">📊</div> PowerPoint</div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  <p>© 2025 Khalid Al-Salami — جميع الحقوق محفوظة</p>
+</footer>
+
+<button class="edit-fab" onclick="openEdit()" title="تعديل المحتوى">✏️</button>
+
+<div class="edit-panel" id="editPanel">
+  <div class="edit-box">
+    <h2>✏️ تعديل المحتوى</h2>
+    <div class="edit-tabs">
+      <button class="edit-tab active" onclick="switchEditTab('profile')">الملف الشخصي</button>
+      <button class="edit-tab" onclick="switchEditTab('contact')">التواصل</button>
+    </div>
+    <div id="etab-profile">
+      <div class="edit-group"><label>الاسم (English)</label><input type="text" id="e-name" value="Khalid Al-Salami" dir="ltr"></div>
+      <div class="edit-group"><label>التخصص والموقع</label><input type="text" id="e-title" value="Graphic Designer — Syria" dir="ltr"></div>
+      <div class="edit-group"><label>نبذة عنك</label><textarea id="e-about" rows="4">السلام عليكم،
+
+أنا خالد السلامي، مصمم هويات بصرية متخصص في بناء علامات تجارية تترك أثراً لدى عملائك.</textarea></div>
+      <div class="edit-group"><label>عدد العملاء</label><input type="text" id="e-clients" value="210"></div>
+      <div class="edit-group"><label>عدد المشاريع</label><input type="text" id="e-projects" value="90+"></div>
+      <div class="edit-group"><label>سنوات الخبرة</label><input type="text" id="e-years" value="4+"></div>
+    </div>
+    <div id="etab-contact" style="display:none;">
+      <div class="edit-group"><label>رقم واتساب</label><input type="text" id="e-whatsapp" value="963993986200" dir="ltr"></div>
+      <div class="edit-group"><label>نص زر التواصل</label><input type="text" id="e-ctabtn" value="تواصل معي"></div>
+    </div>
+    <div class="edit-actions">
+      <button class="btn-save" onclick="saveEdits()">💾 حفظ التغييرات</button>
+      <button class="btn-cancel" onclick="closeEdit()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function showTab(tab) {
+    ['services','about','reviews'].forEach(t => {
+      document.getElementById('tab-'+t).style.display = t===tab?'block':'none';
+    });
+    document.querySelectorAll('.tab-btn').forEach((btn,i) => {
+      btn.classList.toggle('active', ['services','about','reviews'][i]===tab);
+    });
+  }
+  function openEdit() { document.getElementById('editPanel').classList.add('open'); }
+  function closeEdit() { document.getElementById('editPanel').classList.remove('open'); }
+  function switchEditTab(tab) {
+    ['profile','contact'].forEach(t => {
+      document.getElementById('etab-'+t).style.display = t===tab?'block':'none';
+    });
+    document.querySelectorAll('.edit-tab').forEach((b,i) => {
+      b.classList.toggle('active', ['profile','contact'][i]===tab);
+    });
+  }
+  function saveEdits() {
+    const name = document.getElementById('e-name').value;
+    const title = document.getElementById('e-title').value;
+    const about = document.getElementById('e-about').value;
+    const clients = document.getElementById('e-clients').value;
+    const projects = document.getElementById('e-projects').value;
+    const years = document.getElementById('e-years').value;
+    const wa = document.getElementById('e-whatsapp').value;
+    const ctabtn = document.getElementById('e-ctabtn').value;
+
+    document.getElementById('heroName').textContent = name;
+    document.getElementById('heroTitle').textContent = title;
+    document.getElementById('aboutText').innerHTML = about.replace(/\n/g,'<br>');
+    document.getElementById('statClients').textContent = clients;
+    document.getElementById('statProjects').textContent = projects;
+    document.getElementById('statYears').textContent = years;
+    document.getElementById('avatarEmoji').textContent = name.charAt(0).toUpperCase();
+    document.getElementById('contactBtn').textContent = ctabtn;
+    document.getElementById('whatsappBtn').href = 'https://wa.me/'+wa;
+    document.querySelector('.logo').innerHTML = name.split(' ')[0]+'<span>.pro</span>';
+    closeEdit();
+    const fab = document.querySelector('.edit-fab');
+    fab.textContent='✅';
+    setTimeout(()=>fab.textContent='✏️',2000);
+  }
+  document.getElementById('editPanel').addEventListener('click',function(e){
+    if(e.target===this) closeEdit();
+  });
+</script>
+</body>
+</html>
